@@ -15,7 +15,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // AmbientLight 추가 (전반적인 조명)
-const ambientLight = new THREE.AmbientLight(0x404040, 10); // 색상과 강도 설정
+const ambientLight = new THREE.AmbientLight(0x404040, 3); // 색상과 강도 설정
 scene.add(ambientLight);
 
 // DirectionalLight 추가 (특정 방향에서 오는 조명)
@@ -23,7 +23,9 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
 directionalLight.position.set(5, 5, 5); // 위치 설정
 scene.add(directionalLight);
 
-camera.position.z = 5;
+// 카메라 위치 설정 (위에서 아래로 비스듬히 바라보도록)
+camera.position.set(3, 2, 2); // 카메라를 모델에 더 가깝게 배치
+camera.lookAt(0, 0, 0); // 씬의 중심을 바라보도록 설정
 
 // GLTF 모델 로더 설정
 const loader = new GLTFLoader();
